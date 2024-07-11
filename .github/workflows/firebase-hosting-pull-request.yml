@@ -7,8 +7,6 @@ jobs:
   build_and_preview:
     if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     runs-on: ubuntu-latest
-    runs: 
-      using: 'node20'
     steps:
       - uses: actions/checkout@v3
       - run: npm ci && npm run build
@@ -17,3 +15,4 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_PORTFOLIO_3206E }}'
           projectId: portfolio-3206e
+          node-version: 20
