@@ -1,8 +1,7 @@
 {
   "hosting": {
-    "source": ".",
-      "site": "nlw-journey",
-      "public": "public",
+    "site": "nlw-journey",
+    "public": "public",
     "ignore": [
       "firebase.json",
       "**/.*",
