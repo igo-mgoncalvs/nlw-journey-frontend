@@ -11,15 +11,21 @@ interface Participants {
   is_confirmed: boolean
 }
 
-export function Guests () {
-  const [participants, setPrticipants] = useState<Participants[] | undefined>()
+interface GuetsProps {
+  openManegeGuestesModalOpen: () => void
+}
+
+export function Guests ({
+  openManegeGuestesModalOpen
+}: GuetsProps) {
+  const [participants, setParticipants] = useState<Participants[] | undefined>()
 
   const { tripId } = useParams()
 
   useEffect(() => {
     api.get(`/trips/${tripId}/participants`)
       .then(({data}) => {
-        setPrticipants(data.participants)
+        setParticipants(data.participants)
       })
 
   }, [tripId])
@@ -46,7 +52,7 @@ export function Guests () {
         ))}
       </div>
 
-      <Button vatiant="secondary" size="full">
+      <Button vatiant="secondary" size="full" onClick={openManegeGuestesModalOpen}>
         <UserCog className='size-5'/>
         Gerenciar convidados
       </Button>
