@@ -1,5 +1,5 @@
 import { X, AtSign, Plus } from 'lucide-react'
-import { FormEvent, useState, useEffect, useCallback } from 'react'
+import { FormEvent, useState, useEffect } from 'react'
 import { Button } from '../../components/button'
 import { api } from '../../lib/axios'
 import { useParams } from 'react-router-dom'
@@ -53,11 +53,6 @@ export function ManegeGuestesModal ({
         getApi()
       })
   }
-
-  function removeParticipant (participantId: string) {
-    return
-  }
-
   return (
     <div className='fixed inset-0 bg-black/60 flex items-center justify-center'>
       <div className='w-[640px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5'>
@@ -78,7 +73,7 @@ export function ManegeGuestesModal ({
             <div key={participant.id} className='py-1.5 px-2.5 rounded-md bg-zinc-800 flex items-center gap-2'>
               <span className='text-zinc-300'>{participant.email}</span>
               <button type='button'>
-                <X onClick={() => removeParticipant(participant.id)} className='size-4 text-zinc-400'/>
+                <X className='size-4 text-zinc-400'/>
               </button>
             </div>
           ))}
